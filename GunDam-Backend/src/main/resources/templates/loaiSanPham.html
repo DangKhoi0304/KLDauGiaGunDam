@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+      lang="vi">
+    <head>
+        <meta charset="UTF-8">
+        <title>Quản lý loại sản phẩm</title>
+    <th:block th:replace="base :: styles"></th:block>
+    <style>
+        .card-custom {
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        .table thead {
+            background-color: #0d6efd;
+            color: #fff;
+        }
+        .table tbody tr:hover {
+            background-color: #f4f9ff;
+        }
+    </style>
+</head>
+<body>
+<th:block th:replace="base :: header"></th:block>
+
+<main class="container my-4">
+    <h2 class="text-primary fw-bold mb-4">📑 Quản lý loại sản phẩm</h2>
+
+    <!-- Form thêm loại -->
+    <div class="card card-custom mb-4">
+        <div class="card-body">
+            <h5 class="card-title text-secondary">➕ Thêm loại mới</h5>
+            <form th:action="@{/admin/loaiSanPham}" th:object="${loaiSanPham}" method="post" class="row g-3">
+                <div class="col-12 col-md-8">
+                    <input type="text" th:field="*{tenLoai}" class="form-control"
+                           placeholder="Nhập tên loại sản phẩm..." required>
+                </div>
+                <div class="col-12 col-md-4 text-md-start text-center">
+                    <button type="submit" class="btn btn-success w-100">Thêm loại</button>
+                </div>
+            </form>
+            <div th:if="${successMessage}" class="alert alert-success mt-3 text-center fw-semibold"
+                 th:text="${successMessage}"></div>
+        </div>
+    </div>
+
+    <!-- Danh sách loại -->
+    <h4 class="mb-3">📋 Danh sách loại hiện có</h4>
+    <div class="table-responsive shadow-sm">
+        <table class="table align-middle text-center">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Tên loại</th>
+                    <th>Trạng thái</th>
+                    <th>Xóa</th>
+                    <th>Khóa/Mở khóa</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="l : ${dsLoai}">
+                    <td th:text="${l.id}"></td>
+                    <td th:text="${l.tenLoai}"></td>
+                    <td th:text="${l.trangThai}"></td>
+
+                    <!-- Nút xóa -->
+                    <td>
+                        <form th:action="@{/admin/xoa-loai}" method="post"
+                              onsubmit="return confirm('Bạn có chắc muốn xóa loại này không?')">
+                            <input type="hidden" name="id" th:value="${l.id}" />
+                            <button type="submit" class="btn btn-outline-danger btn-sm">🗑️ Xóa</button>
+                        </form>
+                    </td>
+
+                    <!-- Nút khóa/mở khóa -->
+                    <td>
+                        <form th:action="@{/admin/khoa-loai}" method="post" class="d-inline"
+                              th:if="${l.trangThai != 'BI_KHOA'}"
+                              onsubmit="return confirm('Khóa loại sản phẩm này?')">
+                            <input type="hidden" name="id" th:value="${l.id}" />
+                            <button type="submit" class="btn btn-outline-warning btn-sm">🔒 Khóa</button>
+                        </form>
+
+                        <form th:action="@{/admin/mo-khoa-loai}" method="post" class="d-inline"
+                              th:if="${l.trangThai == 'BI_KHOA'}"
+                              onsubmit="return confirm('Mở khóa loại sản phẩm này?')">
+                            <input type="hidden" name="id" th:value="${l.id}" />
+                            <button type="submit" class="btn btn-outline-success btn-sm">🔓 Mở khóa</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+
+<div th:replace="base :: footer"></div>
+
+</body>
+</html>

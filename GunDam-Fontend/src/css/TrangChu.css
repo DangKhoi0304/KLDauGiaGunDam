@@ -1,0 +1,225 @@
+/* ============ Tổng thể trang (chỉ TrangChu) ============ */
+.trangchu-wrapper {
+  --brand-grad: linear-gradient(90deg, #0d6efd 0%, #6f42c1 45%, #dc3545 100%);
+  --brand-soft: linear-gradient(135deg, rgba(13,110,253,.15), rgba(220,53,69,.15));
+  --brand-text-1: #f8f9fa;
+  --brand-text-2: #e9ecef;
+  --accent: #ffd54f;
+}
+
+/* Nền background nhẹ cho toàn trang chủ */
+.trangchu-wrapper {
+  background:
+    radial-gradient(1200px 600px at 10% -10%, rgba(111,66,193,.12), transparent 60%),
+    radial-gradient(1000px 600px at 100% 0%, rgba(220,53,69,.10), transparent 60%);
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+/* Container spacing gọn gàng */
+.trangchu-wrapper.container.mt-5 {
+  margin-top: 2.5rem !important;
+}
+
+/* ============ Hero (khối chào mừng) ============ */
+.trangchu-wrapper .row.justify-content-center.mb-5 .col-md-8.text-center {
+  padding: 3rem 2rem;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #0d6efd 0%, #6f42c1 50%, #dc3545 100%);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 28px rgba(0,0,0,.22);
+}
+
+/* Tiêu đề hero: vàng ngà dễ đọc */
+.trangchu-wrapper .row.justify-content-center.mb-5 .col-md-8.text-center .text-gradient {
+  background: linear-gradient(90deg, #fffbe6, #ffe082);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent !important;
+  text-shadow: 0 4px 14px rgba(0,0,0,.28);
+  letter-spacing: 0.6px;
+}
+
+/* Dòng “Chúc bạn…” đồng tông (trắng ngà) */
+.trangchu-wrapper .row.justify-content-center.mb-5 .col-md-8.text-center p.text-success {
+  color: #f8f9fa !important;
+  opacity: .9;
+  font-weight: 500;
+}
+
+/* Mô tả hero tinh tế */
+.trangchu-wrapper .row.justify-content-center.mb-5 .col-md-8.text-center .text-muted {
+  color: #e9ecef !important;
+  opacity: .95;
+}
+
+/* Nút trong hero */
+.trangchu-wrapper .d-flex.gap-3 .btn { min-width: 160px; }
+
+/* Nút hover */
+.trangchu-wrapper .btn-hover {
+  transition: transform .18s ease, box-shadow .18s ease, background-color .18s ease;
+  box-shadow: 0 8px 22px rgba(13,110,253,.18);
+}
+.trangchu-wrapper .btn-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px rgba(13,110,253,.28);
+}
+.trangchu-wrapper .btn-hover-light {
+  background: transparent;
+  border-color: rgba(255,255,255,.6);
+  color: #fff;
+}
+.trangchu-wrapper .btn-hover-light:hover {
+  background: rgba(255,255,255,.12);
+  border-color: #fff;
+  color: #fff;
+}
+
+/* ============ Tiêu đề mục ============ */
+.trangchu-wrapper h3.text-center.text-secondary {
+  color: #343a40 !important;
+  position: relative;
+  margin-top: 2.25rem;
+}
+.trangchu-wrapper h3.text-center.text-secondary::after{
+  content: "";
+  display: block;
+  margin: .6rem auto 0;
+  width: 90px;
+  height: 4px;
+  border-radius: 999px;
+  background: var(--brand-grad);
+  opacity: .8;
+}
+
+/* ============ Card tính năng & card sản phẩm ============ */
+.trangchu-wrapper .effect-card {
+  border: 0 !important;
+  border-radius: 18px !important;
+  overflow: hidden;
+  transition: transform .18s ease, box-shadow .18s ease, border .18s ease;
+  background: #fff;
+}
+.trangchu-wrapper .effect-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 38px rgba(0,0,0,.15) !important;
+}
+.trangchu-wrapper .effect-card .card-body { padding: 1.25rem 1.2rem; }
+.trangchu-wrapper .effect-card .card-title { font-weight: 700; margin-bottom: .35rem; }
+
+/* Mô tả card: cắt 2 dòng cho đều */
+.trangchu-wrapper .effect-card .card-text {
+  color: #6c757d;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Viền gradient hover (không chặn click) */
+.trangchu-wrapper .effect-card:hover {
+  border: 1px solid transparent !important;
+  background-clip: padding-box;
+  position: relative;
+}
+.trangchu-wrapper .effect-card:hover::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:18px;
+  padding:1px;
+  background: var(--brand-grad);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  pointer-events: none; /* đảm bảo click xuyên qua */
+}
+
+/* Ảnh card sản phẩm */
+.trangchu-wrapper .card-img-top {
+  object-fit: cover;
+  height: 220px;
+  background: #f3f4f6; /* nền dịu khi ảnh fallback */
+}
+
+/* Nút xem chi tiết (giữ chữ trắng) */
+.trangchu-wrapper a.btn.btn-primary {
+  background: #0d6efd;
+  border: none;
+  color: #fff !important;
+  transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+}
+.trangchu-wrapper a.btn.btn-primary:hover {
+  background: #0b5ed7;
+  color: #fff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(13,110,253,.25);
+}
+
+/* ============ Carousel (slider) ============ */
+.trangchu-wrapper .carousel {
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 14px 36px rgba(0,0,0,.18);
+  margin-bottom: 1.75rem;
+}
+.trangchu-wrapper .carousel-item img {
+  height: 440px;
+  object-fit: cover;
+  filter: saturate(1.05) contrast(1.02);
+}
+
+/* Overlay mờ để chữ dễ đọc (bo theo góc, không chặn click) */
+.trangchu-wrapper .carousel-item::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(0,0,0,.28), rgba(0,0,0,.58) 70%);
+  pointer-events: none;
+}
+
+/* Caption trái – chữ trắng + shadow rõ */
+.trangchu-wrapper .carousel-caption {
+  z-index: 2;
+  text-align: left;
+  left: 6%;
+  right: 6%;
+  bottom: 10%;
+}
+.trangchu-wrapper .carousel-caption h3,
+.trangchu-wrapper .carousel-caption p {
+  color: #fff !important;
+  text-shadow: 0 3px 12px rgba(0,0,0,.7);
+}
+.trangchu-wrapper .carousel-caption p { opacity: .95; }
+
+/* Indicator dễ thấy hơn */
+.trangchu-wrapper .carousel-indicators [data-bs-target] {
+  background-color: rgba(255,255,255,.8);
+}
+.trangchu-wrapper .carousel-indicators .active {
+  background-color: #fff;
+}
+
+/* ============ Trạng thái danh sách phiên đấu giá ============ */
+.trangchu-wrapper .text-center.text-secondary.mb-5 + .row.text-center p.text-center {
+  color: #6c757d;
+}
+
+/* ============ Responsive ============ */
+@media (max-width: 991.98px){
+  .trangchu-wrapper .carousel-item img { height: 340px; }
+  .trangchu-wrapper .card-img-top { height: 200px; }
+}
+@media (max-width: 575.98px){
+  .trangchu-wrapper .carousel-item img { height: 260px; }
+  .trangchu-wrapper .row.justify-content-center.mb-5 .col-md-8.text-center{
+    padding: 1.75rem 1.1rem; /* thoáng hơn trên mobile */
+  }
+}

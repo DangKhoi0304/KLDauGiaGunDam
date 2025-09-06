@@ -1,0 +1,100 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+      lang="vi">
+    <head>
+        <meta charset="UTF-8">
+        <title>Hệ thống đấu giá</title>
+
+    <th:block th:fragment="styles">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
+              rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" 
+              rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+        <style>
+            .navbar-brand {
+                font-weight: bold;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+            }
+            footer {
+                background: #212529;
+                color: #f8f9fa;
+            }
+            footer p {
+                margin: 0;
+                font-size: 0.9rem;
+            }
+        </style>
+    </th:block>
+</head>
+<body>
+
+    <!-- Header -->
+    <header th:fragment="header">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+            <div class="container">
+                <a class="navbar-brand" th:href="@{/}">
+                    <i class="bi bi-hammer"></i> Đấu Giá Online
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#mainNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="mainNavbar">
+                    <ul class="navbar-nav ms-auto">
+
+                        <!-- Trang chủ -->
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/}">Trang chủ</a>
+                        </li>
+
+                        <!-- ADMIN -->
+                        <li class="nav-item dropdown" sec:authorize="hasRole('ROLE_ADMIN')">
+                            <a class="nav-link dropdown-toggle" href="#" role="button"
+                               data-bs-toggle="dropdown">Quản trị</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" th:href="@{/admin/duyetNguoiDung}">Duyệt người dùng</a></li>
+                                <li><a class="dropdown-item" th:href="@{/admin/duyetSanPham}">Duyệt sản phẩm</a></li>
+                                <li><a class="dropdown-item" th:href="@{/admin/themNguoiDung}">Thêm người dùng</a></li>
+                                <li><a class="dropdown-item" th:href="@{/admin/loaiSanPham}">Loại sản phẩm</a></li>
+                                <li><a class="dropdown-item" th:href="@{/admin/thongKeDauGia}">Thống kê</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- Cá nhân -->
+                        <li class="nav-item" sec:authorize="isAuthenticated()">
+                            <a class="nav-link" th:href="@{/profile}">
+                                <i class="bi bi-person-circle"></i> Cá nhân
+                            </a>
+                        </li>
+
+                        <!-- Đăng xuất -->
+                        <li class="nav-item" sec:authorize="isAuthenticated()">
+                            <a class="nav-link text-warning" th:href="@{/logout}">
+                                <i class="bi bi-box-arrow-right"></i> Thoát
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Footer -->
+    <footer th:fragment="footer" class="mt-5">
+        <div class="text-center py-3" style="background-color:#3f8efc; color:white;">
+            <p class="mb-0">© 2025 Hệ thống đấu giá | Thiết kế bởi 
+                <strong>Nguyễn Đăng Khôi</strong></p>
+        </div>
+    </footer>
+
+
+
+</body>
+</html>

@@ -1,0 +1,157 @@
+/* ================================
+   Chat – Makeover (robust selectors)
+   ================================ */
+
+/* Khung chat tổng: div flex + height 600 + border-radius 8 (không bám màu) */
+div[style*="display: flex"][style*="height: 600px"][style*="border-radius: 8"] {
+  background:
+    radial-gradient(1000px 600px at 0% -20%, rgba(13,110,253,.08), transparent 60%),
+    radial-gradient(1000px 600px at 100% 0%, rgba(220,53,69,.08), transparent 60%) !important;
+  border: 1px solid rgba(0,0,0,.08) !important;
+  box-shadow: 0 10px 32px rgba(0,0,0,.08) !important;
+  overflow: hidden;
+}
+
+/* Sidebar: div width 280 + height 100% (tránh bám border-right màu) */
+div[style*="width: 280px"][style*="height: 100%"] {
+  background: linear-gradient(180deg, rgba(255,255,255,.9), rgba(248,249,250,.96)) !important;
+  backdrop-filter: blur(3px);
+}
+
+/* Ô search trong sidebar */
+div[style*="width: 280px"] .p-3 .form-control {
+  border-radius: 12px !important;
+  border: 1px solid #e5e7eb !important;
+  background: #fff !important;
+  padding: .65rem .9rem !important;
+  transition: border-color .18s ease, box-shadow .18s ease;
+}
+div[style*="width: 280px"] .p-3 .form-control:focus {
+  border-color: #93c5fd !important;
+  box-shadow: 0 0 0 .2rem rgba(13,110,253,.15) !important;
+}
+
+/* Item người dùng trong sidebar */
+.chat-sidebar-user {
+  transition: transform .15s ease, background .2s ease, box-shadow .2s ease;
+}
+.chat-sidebar-user:hover {
+  background: rgba(13,110,253,.08) !important;
+  transform: translateX(2px);
+  box-shadow: 0 4px 14px rgba(13,110,253,.08);
+}
+.chat-sidebar-user img {
+  box-shadow: 0 4px 10px rgba(0,0,0,.06);
+}
+.chat-sidebar-user div[style*="font-size: 11px"] {
+  color: #64748b !important;
+}
+
+/* Sidebar scrollbar */
+div[style*="width: 280px"] > div[style*="max-height: 500px"] {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0,0,0,.25) transparent;
+}
+div[style*="width: 280px"] > div[style*='max-height: 500px']::-webkit-scrollbar { width: 8px; }
+div[style*="width: 280px"] > div[style*='max-height: 500px']::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,.18);
+  border-radius: 999px;
+}
+
+/* Header ChatBox: phần có padding:16px + border-bottom (tránh bám màu) */
+div[style*="flex: 1"][style*="display: flex"][style*="flex-direction: column"] >
+div[style*="padding: 16px"][style*="border-bottom"] {
+  background: linear-gradient(90deg, rgba(13,110,253,.12), rgba(111,66,193,.12)) !important;
+  border-bottom: 1px solid rgba(0,0,0,.08) !important;
+}
+div[style*="padding: 16px"][style*="border-bottom"] img {
+  box-shadow: 0 6px 16px rgba(0,0,0,.15);
+}
+div[style*="padding: 16px"][style*="border-bottom"] span {
+  font-weight: 700 !important;
+  letter-spacing: .2px;
+}
+
+/* Vùng messages: div flex:1 + overflowY auto + padding 16 (tránh bám màu) */
+div[style*="flex: 1"][style*="overflow-y: auto"][style*="padding: 16px"] {
+  background: linear-gradient(180deg,#f8fafc,#ffffff) !important;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0,0,0,.2) transparent;
+}
+div[style*="flex: 1"][style*="overflow-y: auto"][style*="padding: 16px"]::-webkit-scrollbar { width: 10px; }
+div[style*="flex: 1"][style*="overflow-y: auto"][style*="padding: 16px"]::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,.18);
+  border-radius: 999px;
+}
+
+/* Bong bóng – của mình: container row-reverse + có box nền (không bám màu) */
+div[style*="display: flex"][style*="align-items: center"][style*="margin-bottom: 10px"][style*="row-reverse"]
+> div[style*="padding: 10px"] {
+  background: linear-gradient(135deg,#d1f2eb,#b8f3e8) !important;
+  border: 1px solid rgba(16,185,129,.25);
+  border-radius: 14px 14px 4px 14px !important;
+  box-shadow: 0 10px 24px rgba(16,185,129,.15);
+  max-width: min(68ch, 86%);
+  color: #0f5132;
+}
+
+/* Bong bóng – của người khác: container không row-reverse + có box nền */
+div[style*="display: flex"][style*="align-items: center"][style*="margin-bottom: 10px"]:not([style*="row-reverse"])
+> div[style*="padding: 10px"] {
+  background: #ffffff !important;
+  border: 1px solid #eef2f7;
+  border-radius: 14px 14px 14px 4px !important;
+  box-shadow: 0 8px 20px rgba(0,0,0,.06);
+  max-width: min(68ch, 86%);
+  color: #1f2937;
+}
+
+/* Avatar trong messages */
+div[style*="display: flex"][style*="align-items: center"][style*="margin-bottom: 10px"] img[alt^="Mô tả"] {
+  box-shadow: 0 4px 10px rgba(0,0,0,.12);
+}
+
+/* Nội dung trong bong bóng */
+div[style*="padding: 10px"] > strong {
+  display: block;
+  font-size: .85rem;
+  margin-bottom: .1rem;
+}
+div[style*="padding: 10px"] > div:last-child {
+  font-size: .7rem !important;
+  color: #6b7280 !important;
+  margin-top: .25rem;
+}
+
+/* Form nhập: form.d-flex.p-3 có border-top + background (không bám màu) */
+form.d-flex.p-3[style*="border-top"][style*="background"] {
+  background: linear-gradient(180deg, #ffffff, #f9fafb) !important;
+  border-top: 1px solid rgba(0,0,0,.06) !important;
+}
+form.d-flex.p-3 .form-control {
+  border-radius: 12px !important;
+  border: 1px solid #e5e7eb !important;
+  background: #fff !important;
+  padding: .7rem .9rem !important;
+  transition: border-color .18s ease, box-shadow .18s ease;
+}
+form.d-flex.p-3 .form-control:focus {
+  border-color: #93c5fd !important;
+  box-shadow: 0 0 0 .2rem rgba(13,110,253,.14) !important;
+}
+
+/* Nút gửi */
+form.d-flex.p-3 .btn.btn-primary {
+  border: none !important;
+  border-radius: 12px !important;
+  background: linear-gradient(90deg, #0d6efd, #6f42c1, #dc3545) !important;
+  padding: .6rem 1rem !important;
+  font-weight: 700;
+  letter-spacing: .2px;
+  transition: transform .12s ease, box-shadow .18s ease, filter .12s ease;
+}
+form.d-flex.p-3 .btn.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 26px rgba(13,110,253,.25);
+  filter: saturate(1.04);
+}

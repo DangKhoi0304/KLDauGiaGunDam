@@ -1,0 +1,210 @@
+/* ============ Title ============ */
+.trang-dau-gia .section-title {
+  background: linear-gradient(90deg, #0d6efd, #6f42c1, #dc3545);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  text-shadow: none;                     /* rất quan trọng */
+  -webkit-text-stroke: 0.35px rgba(0,0,0,.12); /* viền mảnh chống chìm */
+  font-weight: 700;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+
+/* ============ Search bar ============ */
+.search-wrap {
+  position: relative;
+  background: linear-gradient(135deg, #fff, #f8f9fa);
+  border-radius: 18px;
+  padding: 10px 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+.search-wrap .search-input {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  font-size: 0.95rem;
+  background: transparent;
+}
+
+/* ============ Sidebar ============ */
+.sticky-side {
+  position: sticky;
+  top: 18px;
+}
+.sticky-side .list-group-item {
+  font-weight: 500;
+  border: none;
+  padding: 0.75rem 1rem;
+  transition: background 0.2s, color 0.2s;
+}
+.sticky-side .list-group-item:hover {
+  background: rgba(13,110,253,.08);
+  color: #0d6efd;
+}
+.sticky-side .list-group-item.active {
+  background: linear-gradient(90deg, #0d6efd, #6f42c1);
+  color: #fff;
+  font-weight: 600;
+}
+
+/* ============ Auction Card ============ */
+.auction-card {
+  border: 0;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+  transition: transform .25s ease, box-shadow .25s ease;
+  background: #fff;
+}
+.auction-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 34px rgba(0,0,0,0.1);
+}
+
+/* Ảnh */
+.thumb-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: #f5f6f9;
+  overflow: hidden;
+}
+.auction-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .3s ease;
+}
+.auction-card:hover .auction-thumb {
+  transform: scale(1.05);
+}
+
+/* Badge trạng thái */
+.badge-wrap {
+  position: absolute;
+  left: 14px;
+  top: 14px;
+}
+.soft-badge {
+  --bs-badge-font-size: 0.8rem;
+  --bs-badge-padding-x: 0.65em;
+  --bs-badge-padding-y: 0.4em;
+  border-radius: 12px;
+  background: rgba(25,135,84,0.85);
+  color: #fff;
+  backdrop-filter: blur(8px);
+}
+
+/* Key-Value inline */
+.kv {
+  display: grid;
+  gap: 2px;
+}
+.kv-label {
+  font-size: 0.75rem;
+  color: #6c757d;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+.kv-value {
+  font-weight: 600;
+  color: #212529;
+}
+
+/* Clamp mô tả */
+.clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  color: #555;
+}
+
+/* Empty state */
+.empty-state {
+  padding: 2rem 1rem;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #f8f9fa, #ffffff);
+  box-shadow: inset 0 0 12px rgba(0,0,0,0.04);
+}
+.empty-state h6 {
+  font-weight: 700;
+  color: #343a40;
+}
+.empty-state p {
+  color: #6c757d;
+  margin-bottom: 0;
+}
+
+/* Marker nếu đã kết thúc */
+.auction-card.is-ended .auction-thumb {
+  filter: grayscale(30%);
+  opacity: 0.85;
+}
+.auction-card.is-ended {
+  background: #fafafa;
+}
+
+/* === Fix kích thước ảnh & đồng bộ card === */
+
+/* Card luôn cao 100% để cột đều nhau */
+.trang-dau-gia .auction-card{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Phần body chiếm phần còn lại (đẩy nút xuống đáy) */
+.trang-dau-gia .auction-card .card-body{
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* thumbnail: dùng chiều cao CỐ ĐỊNH thay vì aspect-ratio */
+.trang-dau-gia .thumb-wrap{
+  position: relative;
+  width: 100%;
+  height: 220px;              /* <— CHIỀU CAO ẢNH THỐNG NHẤT */
+  background: #f5f6f9;
+  overflow: hidden;
+}
+
+/* có thể tăng trên màn lớn */
+@media (min-width: 768px){
+  .trang-dau-gia .thumb-wrap{ height: 240px; }
+}
+@media (min-width: 1200px){
+  .trang-dau-gia .thumb-wrap{ height: 220px; } /* hoặc 260px nếu bạn thích */
+}
+
+/* ảnh fill khung, không méo */
+.trang-dau-gia .auction-thumb{
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  transition: transform .3s ease;
+}
+
+/* giữ badge overlay đúng vị trí */
+.trang-dau-gia .badge-wrap{
+  position: absolute;
+  left: 14px;
+  top: 14px;
+  z-index: 2;
+}
+
+/* đảm bảo khu mô tả luôn đủ chỗ 2 dòng – tránh “giật” độ cao */
+.trang-dau-gia .clamp-2{
+  min-height: 2.6em; /* ~2 dòng */
+}
+
+/* nhóm nút nằm cuối body để các card cân chiều cao */
+.trang-dau-gia .auction-card .d-flex.align-items-center:last-child{
+  margin-top: auto;
+}

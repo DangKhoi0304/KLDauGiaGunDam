@@ -1,0 +1,188 @@
+/* ================================
+   DonThanhToan – Makeover (CSS only)
+   Scope theo .mt-4 (container trang)
+   ================================ */
+
+/* ---------- Header + badge tổng ---------- */
+.mt-4 > .d-flex.align-items-center.mb-3 h3.mb-0 {
+  font-weight: 800;
+  letter-spacing: .2px;
+  color: #111827; /* gray-900 */
+  margin-right: .5rem;
+}
+.mt-4 > .d-flex.align-items-center.mb-3 .badge {
+  border-radius: 999px;
+  padding: .45rem .7rem;
+  box-shadow: 0 6px 18px rgba(0,0,0,.08);
+}
+
+/* ---------- Empty state ---------- */
+.mt-4 > .text-muted {
+  background: linear-gradient(180deg, #ffffff, #f8fafc);
+  border: 1px dashed #e5e7eb;
+  border-radius: 14px;
+  padding: 1rem 1.25rem;
+  color: #6b7280 !important;
+}
+
+/* ---------- Card đơn ---------- */
+.mt-4 .card.h-100.shadow-sm {
+  border: 1px solid rgba(0,0,0,.06) !important;
+  border-radius: 18px !important;
+  background: linear-gradient(180deg, rgba(255,255,255,.96), rgba(248,250,252,.98)) !important;
+  box-shadow:
+    0 10px 28px rgba(2,6,23,.08),
+    inset 0 0 0 1px rgba(255,255,255,.5) !important;
+  overflow: hidden;
+  transition: transform .18s ease, box-shadow .2s ease;
+}
+.mt-4 .card.h-100.shadow-sm:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 42px rgba(2,6,23,.10);
+}
+.mt-4 .card.h-100.shadow-sm .card-body {
+  padding: 1.2rem 1.2rem 1rem 1.2rem;
+}
+
+/* Thanh tiêu đề + badge trạng thái trong card */
+.mt-4 .card .card-title {
+  font-weight: 700;
+  line-height: 1.25;
+  margin-bottom: .25rem !important;
+}
+.mt-4 .card .badge {
+  border-radius: 10px;
+  padding: .4rem .6rem;
+  font-weight: 600;
+}
+
+/* Dòng giá + thời gian */
+.mt-4 .card .mb-2 > strong {
+  color: #111827;
+}
+.mt-4 .card .text-muted {
+  color: #6b7280 !important;
+}
+
+/* ---------- Form khi PENDING ---------- */
+.mt-4 .card .form-label {
+  font-weight: 600;
+  color: #344054; /* slate-700 */
+  margin-bottom: .35rem;
+}
+.mt-4 .card .form-control,
+.mt-4 .card .form-select {
+  border-radius: 12px !important;
+  border: 1px solid #e5e7eb !important;
+  background: #fff !important;
+  padding: .7rem .95rem !important;
+  box-shadow: none !important;
+  transition: border-color .18s ease, box-shadow .18s ease, transform .18s ease;
+}
+.mt-4 .card .form-control:hover,
+.mt-4 .card .form-select:hover {
+  border-color: #d1d5db !important;
+}
+.mt-4 .card .form-control:focus,
+.mt-4 .card .form-select:focus {
+  border-color: #93c5fd !important;
+  box-shadow: 0 0 0 .25rem rgba(13,110,253,.15) !important;
+  transform: translateY(-1px);
+}
+
+/* Hàng input sát nhau đẹp hơn */
+.mt-4 .card .row.g-2 > [class^="col"],
+.mt-4 .card .row.g-2 > [class*=" col"] {
+  margin-top: .15rem;
+}
+
+/* ---------- Box info chuyển khoản (BANK) ---------- */
+.mt-4 .card .border.rounded.p-3.bg-light {
+  border-radius: 14px !important;
+  border: 1px solid #e5e7eb !important;
+  background: linear-gradient(180deg, #f8fafc, #ffffff) !important;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.6);
+}
+.mt-4 .card .border.rounded.p-3.bg-light h6 {
+  font-weight: 700;
+  margin-bottom: .45rem;
+}
+.mt-4 .card .border.rounded.p-3.bg-light img {
+  border-radius: 10px;
+  box-shadow: 0 12px 30px rgba(0,0,0,.15);
+}
+
+/* ---------- Nút thanh toán ---------- */
+.mt-4 .card .btn.btn-success {
+  border: none !important;
+  border-radius: 12px !important;
+  background: linear-gradient(90deg, #10b981, #22c55e) !important;
+  font-weight: 700;
+  letter-spacing: .2px;
+  padding: .6rem 1rem;
+  min-width: 150px;
+  transition: transform .12s ease, box-shadow .18s ease, filter .12s ease;
+}
+.mt-4 .card .btn.btn-success:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 28px rgba(16,185,129,.25);
+  filter: saturate(1.03);
+}
+.mt-4 .card .btn.btn-success:disabled {
+  opacity: .8;
+  cursor: not-allowed;
+}
+
+/* ---------- Khối trạng thái đã thanh toán/đã hủy ---------- */
+.mt-4 .card strong {
+  color: #111827;
+}
+
+/* ---------- Lưới cards ---------- */
+.mt-4 .row.g-3 > [class^="col"],
+.mt-4 .row.g-3 > [class*=" col"] {
+  display: flex;
+}
+.mt-4 .row.g-3 > [class^="col"] .card,
+.mt-4 .row.g-3 > [class*=" col"] .card {
+  width: 100%;
+}
+
+/* ---------- Polishing badge màu để đồng bộ thương hiệu ---------- */
+/* PENDING (warning) – vàng ấm */
+.mt-4 .badge.bg-warning {
+  color: #7a5d00 !important;
+  background: #fde68a !important;
+}
+/* SELLER_REVIEW (primary) – xanh dương dịu */
+.mt-4 .badge.bg-primary {
+  background: #93c5fd !important;
+  color: #1e3a8a !important;
+}
+/* PAID (success) – xanh lá tươi */
+.mt-4 .badge.bg-success {
+  background: #86efac !important;
+  color: #065f46 !important;
+}
+/* CANCELLED (secondary) – xám trung tính */
+.mt-4 .badge.bg-secondary {
+  background: #e5e7eb !important;
+  color: #374151 !important;
+}
+
+/* ---------- Alert message ---------- */
+.mt-4 .alert {
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,.06);
+  box-shadow: 0 10px 24px rgba(0,0,0,.08);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 575.98px) {
+  .mt-4 .card.h-100.shadow-sm .card-body {
+    padding: 1rem;
+  }
+  .mt-4 > .d-flex.align-items-center.mb-3 h3.mb-0 {
+    font-size: 1.125rem;
+  }
+}

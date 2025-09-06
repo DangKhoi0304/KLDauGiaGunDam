@@ -1,0 +1,74 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="vi">
+    <head>
+        <meta charset="UTF-8">
+        <title>Đăng nhập | Đấu Giá Online</title>
+    <th:block th:replace="base :: styles"></th:block>
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .login-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .login-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 2rem;
+            max-width: 400px;
+            width: 100%;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+        }
+        .login-card h2 {
+            font-weight: 700;
+            color: #007bff;
+            margin-bottom: 1.5rem;
+        }
+        .form-control {
+            border-radius: 8px;
+        }
+        .btn-login {
+            width: 100%;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <div th:replace="base :: header"></div>
+
+    <main class="login-container">
+        <div class="login-card">
+            <h2 class="text-center">Đăng nhập</h2>
+            <form th:action="@{/login}" method="post">
+                <div class="mb-3">
+                    <input type="text" class="form-control" name="username" placeholder="Nhập tên đăng nhập" required />
+                </div>
+                <div class="mb-3">
+                    <input type="password" class="form-control" name="password" placeholder="Nhập mật khẩu" required />
+                </div>
+                <button type="submit" class="btn btn-primary btn-login">Đăng nhập</button>
+
+                <!-- Thông báo lỗi -->
+                <div class="alert alert-danger mt-3" th:if="${param.error}">
+                    ⚠️ Sai tên đăng nhập hoặc mật khẩu!
+                </div>
+                <div class="alert alert-warning mt-3" th:if="${param.notAdmin}">
+                    🚫 Bạn không có quyền truy cập. Chỉ quản trị viên được phép sử dụng chức năng này.
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <div th:replace="base :: footer"></div>
+
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+      lang="vi">
+    <head>
+        <meta charset="UTF-8">
+        <title>Bảng điều khiển | Quản lý người dùng</title>
+
+        <!-- Gọi fragment styles -->
+    <th:block th:replace="~{base :: styles}"></th:block>
+
+    <style>
+        h2 {
+            font-weight: 700;
+            color: #007bff;
+            margin-bottom: 1rem;
+        }
+        .custom-table {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .custom-table thead {
+            background: #007bff;
+            color: #fff;
+        }
+        .custom-table tbody tr:hover {
+            background-color: #f1f7ff;
+        }
+        .badge-role {
+            font-size: 0.8rem;
+            padding: 5px 10px;
+            border-radius: 12px;
+        }
+        .badge-admin {
+            background: #dc3545;
+            color: white;
+        }
+        .badge-user {
+            background: #198754;
+            color: white;
+        }
+        .badge-seller {
+            background: #ffc107;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+<th:block th:replace="~{base :: header}"></th:block>
+
+<div class="container mt-4">
+    <h2 class="text-center">👥 Quản lý tài khoản</h2>
+
+    <!-- Thông báo -->
+    <div th:if="${message}" class="alert alert-success text-center fw-bold" th:text="${message}"></div>
+
+
+    <!-- Danh sách người dùng -->
+    <h4 class="mt-5 mb-3">📋 Danh sách tài khoản</h4>
+    <div class="table-responsive">
+        <table class="table table-hover align-middle custom-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Tài khoản</th>
+                    <th>Email</th>
+                    <th>Vai trò</th>
+                    <th>Mật khẩu (mã hóa)</th>
+                    <th>Ảnh đại diện</th>
+                    <th>Trạng thái</th>
+                    <th class="text-center">Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="u, iterStat : ${users}">
+                    <td th:text="${iterStat.index + 1}"></td>
+                    <td th:text="${u.username}"></td>
+                    <td th:text="${u.email}"></td>
+
+                    <!-- Vai trò với badge -->
+                    <td>
+                        <span th:if="${u.vaiTro == 'ROLE_ADMIN'}" class="badge-role badge-admin">Admin</span>
+                        <span th:if="${u.vaiTro == 'ROLE_NGUOIMUA'}" class="badge-role badge-user">Người dùng</span>
+                        <span th:if="${u.vaiTro == 'ROLE_NGUOIBAN'}" class="badge-role badge-seller">Người bán</span>
+                    </td>
+
+                    <td>
+                        <input type="text" th:value="${u.password}" class="form-control form-control-sm"
+                               readonly style="font-size: 0.75rem;" />
+                    </td>
+                    <td>
+                        <img th:if="${u.avatar}" th:src="${u.avatar}" alt="Avatar"
+                             width="45" height="45" class="rounded-circle border">
+                        <span th:if="${u.avatar == null}" class="text-muted">Chưa có</span>
+                    </td>
+                    <td>
+                        <span th:text="${u.trangThai}"
+                              th:classappend="${u.trangThai == 'BI_KHOA'} ? 'text-danger fw-bold' : 'text-success fw-bold'">
+                        </span>
+                    </td>
+
+                    <!-- Thao tác -->
+                    <td class="text-center">
+                        <!-- Xóa -->
+                        <form th:action="@{/admin/delete-user}" method="post" style="display:inline-block;">
+                            <input type="hidden" name="userId" th:value="${u.id}" />
+                            <button type="submit" class="btn btn-outline-danger btn-sm"
+                                    onclick="return confirm('Xác nhận xóa người dùng này?')">
+                                Xóa
+                            </button>
+                        </form>
+
+                        <!-- Khóa -->
+                        <form th:action="@{/admin/khoa-user}" method="post" style="display:inline-block;"
+                              th:if="${u.trangThai != 'BI_KHOA'}">
+                            <input type="hidden" name="userId" th:value="${u.id}" />
+                            <button type="submit" class="btn btn-outline-warning btn-sm"
+                                    onclick="return confirm('Khóa tài khoản này?')">
+                                Khóa
+                            </button>
+                        </form>
+
+                        <!-- Mở khóa -->
+                        <form th:action="@{/admin/mo-khoa-user}" method="post" style="display:inline-block;"
+                              th:if="${u.trangThai == 'BI_KHOA'}">
+                            <input type="hidden" name="userId" th:value="${u.id}" />
+                            <button type="submit" class="btn btn-outline-success btn-sm"
+                                    onclick="return confirm('Mở khóa tài khoản này?')">
+                                Mở khóa
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div th:replace="base :: footer"></div>
+</body>
+</html>
