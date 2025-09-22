@@ -78,9 +78,14 @@ const Header = () => {
             )}
 
             <Nav.Link as={Link} to="/lienhe">Liên hệ với mọi người</Nav.Link>
-            <Nav.Link as={Link} to="/themtaikhoan">Thêm TK ngân hàng</Nav.Link>
-            <Nav.Link as={Link} to="/thanhtoan">Thanh toán</Nav.Link>
 
+            {user && (
+              <>
+                <Nav.Link as={Link} to="/themtaikhoan">Thêm TK ngân hàng</Nav.Link>
+                <Nav.Link as={Link} to="/thanhtoan">Thanh toán</Nav.Link>
+              </>
+            )}
+            
             {laNguoiBan && (
               <Nav.Link as={Link} to="/quanlybaidau" className="fw-semibold">
                 Quản lý bài đấu

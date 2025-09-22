@@ -4,6 +4,7 @@ import { authApis, endpoints } from "../configs/Apis";
 import { MyUserContext } from "../configs/Contexts";
 import { Container, Row, Col, Card, Form, Button, Alert } from "react-bootstrap";
 import cookie from "react-cookies";
+import "../css/ChiTietBaiDauGia.css";
 
 const ChiTietBaiDauGia = () => {
   const { id } = useParams();

@@ -1,38 +1,92 @@
-/* Cải tiến giao diện đăng nhập */
+/* ---- Chỉ style riêng khối đăng nhập ---- */
+
+/* Thẻ card chứa form */
 .login-container {
-  max-width: 500px;
-  margin: 50px auto;
-  padding: 30px;
-  background: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 480px;
+  margin: 48px auto;
+  padding: 28px 24px;
+  background: rgba(255,255,255,0.9);
+  border: 1px solid rgba(17,24,39,0.08);
+  border-radius: 16px;
+  box-shadow: 0 10px 24px rgba(2,6,23,0.08);
 }
 
-.form-style {
-  margin-top: 20px;
+/* Tiêu đề trong container */
+.login-container h2 {
+  margin-bottom: 16px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
 }
 
-.form-input {
-  padding: 12px;
-  border-radius: 5px;
-  border: 1px solid #ddd;
-  margin-bottom: 15px;
-  font-size: 16px;
+/* Form nằm trong container */
+.login-container .form-style {
+  margin-top: 12px;
 }
 
-.form-input:focus {
-  border-color: #007bff;
+/* Input chỉ trong form của login */
+.login-container .form-input {
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(17,24,39,0.12);
+  background: #fff;
+  font-size: 15.5px;
+  transition: border-color .15s ease, box-shadow .15s ease, transform .05s ease;
 }
 
-.submit-button {
+.login-container .form-input::placeholder {
+  color: #6b7280;
+}
+
+.login-container .form-input:focus {
+  outline: none;
+  border-color: #22c55e;          /* xanh lá dịu */
+  box-shadow: 0 0 0 3px rgba(34,197,94,0.18);
+  transform: translateY(-1px);
+}
+
+/* Nút submit chỉ trong container */
+.login-container .submit-button {
   width: 100%;
-  padding: 10px;
+  padding: 12px 14px;
   font-size: 16px;
-  border-radius: 5px;
-  background-color: #28a745;
-  border: none;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  background-color: #16a34a;      /* green-600 */
+  color: #fff;
+  font-weight: 700;
+  transition: transform .08s ease, box-shadow .15s ease, background-color .15s ease;
+  box-shadow: 0 8px 18px rgba(22,163,74,0.22);
 }
 
-.submit-button:hover {
-  background-color: #218838;
+.login-container .submit-button:hover {
+  background-color: #15803d;      /* green-700 */
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(22,163,74,0.28);
+}
+
+.login-container .submit-button:active {
+  transform: translateY(0);
+  box-shadow: 0 6px 16px rgba(22,163,74,0.22);
+}
+
+/* Alert CHỈ khi nằm trong login-container */
+.login-container .alert {
+  border-radius: 12px;
+}
+
+/* Responsive nhẹ */
+@media (max-width: 420px) {
+  .login-container { padding: 22px 18px; border-radius: 14px; }
+  .login-container .form-input { font-size: 15px; padding: 11px 12px; }
+  .login-container .submit-button { font-size: 15px; padding: 11px; }
+}
+
+/* Font tiêu đề trong login-container */
+.login-container h2 {
+  font-family: "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 1.75rem;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #1f2937; /* gần giống text-dark */
 }

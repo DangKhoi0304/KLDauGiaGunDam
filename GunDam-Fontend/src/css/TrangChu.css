@@ -223,3 +223,29 @@
     padding: 1.75rem 1.1rem; /* thoáng hơn trên mobile */
   }
 }
+.icon-circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+.effect-card {
+  border: 0;
+  border-radius: 16px;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.effect-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+}
+.effect-card .card-title {
+  font-weight: 700;
+}
+.effect-card .card-text {
+  color: #6c757d;
+  margin-bottom: 0;
+}
